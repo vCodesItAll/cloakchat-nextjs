@@ -1,7 +1,7 @@
 
 
 const createWebSocket = () => {
-    const ws = new WebSocket("ws://localhost:3000/ws");
+    const ws = new WebSocket("ws://localhost:8000/ws");
     
 }
 

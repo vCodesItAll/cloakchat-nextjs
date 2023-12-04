@@ -19,6 +19,7 @@ export default function Home() {
   };
 
 
+
   const { state, dispatch } = useGlobalState();
   const router = useRouter();
   
@@ -52,6 +53,7 @@ export default function Home() {
     
 
 
+
   const handleLogout = () => {
     authService.logout();
     dispatch({ type: 'LOGOUT_USER' });
@@ -63,6 +65,8 @@ export default function Home() {
       {/* <main className={styles.main}>
         <div className={styles.grid}> */}
           {/* {state.user ? ( */}
+
+          
             <>
               <MessageInput
                 message={message}
