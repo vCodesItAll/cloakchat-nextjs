@@ -6,7 +6,8 @@ import authService from '../services/auth.service';
 import { jwtDecode } from "jwt-decode";
 import styles from '../styles/home.module.css';
 import Link from 'next/link';
-import { MessageInput } from '../components/message_component';
+// import { MessageInput } from '../components/message_component';
+import MessageInput from '../components/message_component';
 
 export default function Home() {
 
@@ -35,9 +36,9 @@ export default function Home() {
   // MY COMPONENT THAT I WISH WOULD WORK
   return (
     <>
-      <main className={`${styles.main}`}>
-        <div className={styles.grid}>
-          {state.user ? (
+      {/* <main className={styles.main}>
+        <div className={styles.grid}> */}
+          {/* {state.user ? ( */}
             <>
               <MessageInput
                 // value={message}
@@ -50,15 +51,17 @@ export default function Home() {
                 </Link>
               </li>
             </>
-          ) : (
-            <li className="nav-item">
-              <Link href="/login">Login</Link>
-            </li>
-          )}
-        </div>
-      </main>
-    </>
-  );
+            </>
+          )
+  {/* //         ) : (
+  //           <li className="nav-item">
+  //             <Link href="/login">Login</Link>
+  //           </li>
+  //         )}
+  //       </div> */} 
+  {/* //     </main> */}
+    
+  // );
   // const sendMessage = async () => {
   //   try {
   //     // Make a POST request to your backend endpoint with the message
