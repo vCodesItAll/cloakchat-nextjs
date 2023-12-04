@@ -8,25 +8,49 @@ import styles from '../styles/home.module.css';
 import Link from 'next/link';
 // import { MessageInput } from '../components/message_component';
 import MessageInput from '../components/message_component';
+import { WEB_SOC_URL } from '@/services/auth.constants';
+
 
 export default function Home() {
+  const [ws] = useState(new WebSocket(WEB_SOC_URL));
+
+  ws.onopen = (event) => {
+    console.log('open')
+  };
+
 
   const { state, dispatch } = useGlobalState();
   const router = useRouter();
   
   const [message, setMessage] = useState('');
-  const sendMessage = async () => {
-    try {
-      // Make a POST request to your backend endpoint with the message
-      const response = await axios.post('/api/messages', { message });
+  // const sendMessage = async () => {
+  //   try {
+  //     // Make a POST request to your backend endpoint with the message
+  //     const response = await axios.post('/api/messages', { message });
 
-      // Handle success (e.g., show success message)
-      console.log('Message sent successfully!', response.data);
-    } catch (error) {
-      // Handle errors (e.g., show error message)
-      console.error('Error sending message:', error.message);
+  //     // Handle success (e.g., show success message)
+  //     console.log('Message sent successfully!', response.data);
+  //   } catch (error) {
+  //     // Handle errors (e.g., show error message)
+  //     console.error('Error sending message:', error.message);
+  //   }
+  // };
+
+  
+
+    const sendMessage = () => {
+      console.log('send', message);
+      ws.send(message);
+      ws.send({
+        message: message,
+        date: new Date(),
+      });
     }
-  };
+    ws.onmessage = (event) => {
+      console.log(event.data);
+    };
+    
+
 
   const handleLogout = () => {
     authService.logout();
@@ -41,7 +65,8 @@ export default function Home() {
           {/* {state.user ? ( */}
             <>
               <MessageInput
-                // value={message}
+                message={message}
+                setMessage={setMessage}
                 // onChange={(e) => setMessage(e.target.value)}
               />
               <button onClick={sendMessage}>Send Message</button>
