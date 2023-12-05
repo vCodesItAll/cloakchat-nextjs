@@ -30,7 +30,7 @@ function RegisterPage() {
       
       if (resp.data.access_token) {
         //let data = jwtDecode(resp.access_token);
-        let data = jwtDecode(resp.data.access_token, { header: true });
+        let data = resp.data;
         await dispatch({
             type: 'SET_USER',
             payload: data,
