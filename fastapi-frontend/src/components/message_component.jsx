@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import axios from 'axios'; // Use Axios for HTTP requests
+import axios from 'axios'; 
 
 export default function MessageInput(props) {
-  // const [message, setMessage] = useState(props.message);
+
 
   console.log(props.message);
 
@@ -14,9 +14,7 @@ export default function MessageInput(props) {
         onChange={(e) => props.setMessage(e.target.value)}
         placeholder="Type your message..."
       />
-      {/* <button onClick={setMessage}>Send</button> */}
     </div>
   );
 };
 
-// export default MessageInput;
