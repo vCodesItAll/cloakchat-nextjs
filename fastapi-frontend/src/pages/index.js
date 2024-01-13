@@ -12,7 +12,7 @@ import createWebSocket from "@/websocket/createWebSocket";
 createWebSocket();
 
 export default function Home() {
-  const [ws] = useState(new WebSocket(WEB_SOC_URL));
+  const [ws] = useState(new WebSocket(WEB_SOC_URL+"/1"));
 
   ws.onopen = (event) => {
     console.log("open");
@@ -21,7 +21,7 @@ export default function Home() {
   const { state, dispatch } = useGlobalState();
   const router = useRouter();
   const [messages, setMessages] = useState([]);
-
+  let msgs = [];
   const [message, setMessage] = useState("");
 
   const sendMessage = () => {
@@ -34,12 +34,15 @@ export default function Home() {
   };
   ws.onmessage = (event) => {
     console.log("onmessage", event.data);
+    console.log(messages);
     setMessages([...messages, event.data]);
   };
 
-  const msgs = messages.map((m, i) => {
-    <li key={i}>{m.data}</li>;
-  });
+  useEffect(() => {
+    msgs = messages.map((m, i) => {
+      return <li key={i}>{m.data}</li>;
+    });
+  }, [messages])
 
   const handleLogout = () => {
     authService.logout();
@@ -52,7 +55,10 @@ export default function Home() {
       <>
         <MessageInput message={message} setMessage={setMessage} />
         <button onClick={sendMessage}>Send Message</button>
-        <ul>{msgs}</ul>
+        <ul>{messages.map((m, i) => {
+          console.log(m)
+      return <li key={i}>{m}</li>;
+    })}</ul>
         <li className="nav-item">
           <Link href="/" className={styles.logout} onClick={handleLogout}>
             Logout
