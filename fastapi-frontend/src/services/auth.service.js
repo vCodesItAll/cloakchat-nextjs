@@ -83,4 +83,4 @@ import {
     }
   }
   const authService = new AuthService();
-  export default new authService();
+  export default authService();
