@@ -13,8 +13,8 @@ function help() {
         <li>
           Once your friend accepts the request, proceed to create a message.
         </li>
-        <li>Find the Create Message option in the app's menu.</li>
-        <li>Enter your friend's name.</li>
+        <li>Find the Create Message option in the menu.</li>
+        <li>Enter the name of your friend.</li>
         <li>Compose your message in the provided text box.</li>
         <li>Review the message and click Send to collaborate instantly.</li>
       </ol>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import DataService from "@/services/data.service";
 import { useEffect } from "react";
 import { useGlobalState } from "@/context/GlobalState";
+import DataService from "@/services/data.service";
 
 export default function DashboardPage() {
   const [localState, setLocalState] =  useState({});

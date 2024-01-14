@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    msgs = messages.map((m, i) => {
+    const msgs = messages.map((m, i) => {
       return <li key={i}>{m.data}</li>;
     });
   }, [messages])
