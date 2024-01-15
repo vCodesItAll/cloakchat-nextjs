@@ -9,7 +9,7 @@ import MessageInput from "../components/message_component";
 import { WEB_SOC_URL } from "@/services/auth.constants";
 import createWebSocket from "@/websocket/createWebSocket";
 
-createWebSocket();
+// createWebSocket();
 
 export default function Home() {
   const [ws] = useState(new WebSocket(WEB_SOC_URL+"/1"));
