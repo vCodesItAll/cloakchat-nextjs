@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DataService from "@/services/data.service";
+// import DataService from "@/services/data.service";
 import { useEffect } from "react";
 import { useGlobalState } from "@/context/GlobalState";
 // import DataService from "@/services/data.service";
